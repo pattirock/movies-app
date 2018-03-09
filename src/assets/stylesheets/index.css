@@ -1,5 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
+@import '../../../node_modules/bulma/css/bulma.css';
+@import '../../../node_modules/font-awesome/css/font-awesome.min.css'; 
+
+@import '../../pages/List/List.css';
