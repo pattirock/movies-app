@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import List from './List';
 
 import { getMovies } from '../../modules/movies/actions';
+import { filterBy } from '../../modules/filters/actions';
 
 const mapStateToProps = state => ({
   movies: state.movies.results,
@@ -10,7 +11,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMovies: (filter, page) => dispatch(getMovies(filter, page)),
+  getMovies: (filter, page) => {
+    dispatch(getMovies(filter, page));
+    dispatch(filterBy(filter, page));
+  },
 });
 
 const ListContainer = connect(
