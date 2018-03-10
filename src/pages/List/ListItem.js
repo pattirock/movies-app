@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-/* eslint-disable camelcase */
+/* eslint-disable camelcase, jsx-a11y/anchor-is-valid */
 class ListItem extends Component {
   render() {
-    const { data: { poster_path, title } } = this.props;
+    const { data: { id, poster_path, title } } = this.props;
     return (
       <div className="column is-3">
-        <figure className="image is-square">
-          <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
-        </figure>
+        <Link to={`/movie/${id}`}>
+          <figure className="image is-square">
+            <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
+          </figure>
+        </Link>
       </div>
     );
   }
