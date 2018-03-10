@@ -1,7 +1,8 @@
 import types from './types';
+import initialState from './initialState';
 
 // Reducer
-const filtersReducer = (filters = [], action) => {
+const filtersReducer = (filters = initialState, action) => {
   const { type } = action;
 
   switch (type) {
@@ -9,6 +10,11 @@ const filtersReducer = (filters = [], action) => {
       const { filterName, page } = action;
 
       return { filterName, page };
+    }
+    case types.CHANGE_PAGE: {
+      const { page } = action;
+
+      return Object.assign({}, filters, { page });
     }
     default: {
       return filters;
