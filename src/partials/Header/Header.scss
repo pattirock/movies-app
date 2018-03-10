@@ -1,0 +1,14 @@
+.navbar {
+  &.has-shadow {
+    box-shadow: 0 2px 3px rgba(17,17,17,.1);
+  }
+
+  .brand-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+  }
+
+  .control {
+    margin-top: 12px;
+  }
+}
