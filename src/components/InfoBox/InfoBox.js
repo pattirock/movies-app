@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 // import './InfoBox.scss';
 
 const InfoBox = ({
-  itemPerPage, page, totalPages, totalResults,
+  itemPerPage, page, totalPages, totalResults, className,
 }) => (
-  <nav className="level">
+  <nav className={`level ${className}`}>
     <div className="level-item has-text-centered">
       <div>
         <p className="heading">Current Page</p>
@@ -34,6 +34,7 @@ const InfoBox = ({
 );
 
 InfoBox.propTypes = {
+  className: PropTypes.string,
   itemPerPage: PropTypes.number,
   page: PropTypes.number,
   totalResults: PropTypes.number,
@@ -41,6 +42,7 @@ InfoBox.propTypes = {
 };
 
 InfoBox.defaultProps = {
+  className: '',
   itemPerPage: 0,
   page: 0,
   totalResults: 0,
