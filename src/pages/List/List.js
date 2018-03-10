@@ -43,7 +43,6 @@ class List extends Component {
     const { getMovies } = this.props;
 
     if (filter !== prevState.filter) {
-      console.debug(filter, page);
       getMovies(filter, page);
     }
   }
