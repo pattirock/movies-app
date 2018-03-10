@@ -74,6 +74,7 @@ class List extends Component {
                 <Pagination />
               </div>
               <Filters
+                className="movie-filters"
                 filterBy={(filterName) => {
                   this.setState({
                     filter: filterName,

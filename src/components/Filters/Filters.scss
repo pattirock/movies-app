@@ -1,0 +1,10 @@
+.movie-filters {
+  a.navbar-item {
+    &:hover,
+    &.selected {
+      color: #00d1b2;
+      background: transparent;
+    }
+  }
+
+}
