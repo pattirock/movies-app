@@ -6,8 +6,10 @@ import { filterBy } from '../../modules/filters/actions';
 
 const mapStateToProps = state => ({
   movies: state.movies.results,
+  filter: state.filters.filterName,
   totalResults: state.movies.total_results,
   totalPages: state.movies.total_pages,
+  currentPage: state.filters.page,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -15,35 +15,36 @@ class List extends Component {
     super(props);
 
     this.state = {
-      filter: 'popular',
-      page: 1,
+      filter: props.filter,
     };
   }
 
   componentDidMount() {
-    const { filter, page } = this.state;
-    const { getMovies } = this.props;
+    const { getMovies, currentPage } = this.props;
+    const { filter } = this.state;
 
-    getMovies(filter, page);
+    getMovies(filter, currentPage);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { filter, page } = this.state;
-    const { movies } = this.props;
+    const { movies, currentPage } = this.props;
+    const { filter } = this.state;
+
+    console.debug(currentPage);
 
     return (
-      page !== nextState.page ||
+      currentPage !== nextProps.currentPage ||
       filter !== nextState.filter ||
       !isEqual(movies, nextProps.movies)
     );
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { filter, page } = this.state;
-    const { getMovies } = this.props;
+  componentDidUpdate(prevProps) {
+    const { getMovies, currentPage } = this.props;
+    const { filter } = this.state;
 
-    if (filter !== prevState.filter) {
-      getMovies(filter, page);
+    if (filter !== prevProps.filter) {
+      getMovies(filter, currentPage);
     }
   }
 
@@ -56,7 +57,7 @@ class List extends Component {
   }
 
   render() {
-    const { totalPages, totalResults } = this.props;
+    const { totalPages, totalResults, currentPage } = this.props;
     return (
       <div className="list-page">
         <Header />
@@ -64,13 +65,15 @@ class List extends Component {
           <InfoBox
             totalPages={totalPages}
             totalResults={totalResults}
-            page={1}
+            page={currentPage}
             itemPerPage={CONSTANTS.itemPerPage}
           />
           <div className="navbar options-bar">
             <div className="container is-widescreen">
               <div className="navbar-start">
-                <Pagination />
+                <Pagination
+                  totalPages={totalPages}
+                />
               </div>
               <Filters
                 className="movie-filters"
@@ -93,6 +96,8 @@ class List extends Component {
 }
 
 List.propTypes = {
+  currentPage: PropTypes.number,
+  filter: PropTypes.string,
   getMovies: PropTypes.func,
   movies: PropTypes.arrayOf(PropTypes.object),
   totalResults: PropTypes.number,
@@ -100,6 +105,8 @@ List.propTypes = {
 };
 
 List.defaultProps = {
+  currentPage: 1,
+  filter: 'popular',
   getMovies: () => {},
   movies: [],
   totalResults: 0,
