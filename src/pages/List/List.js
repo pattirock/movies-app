@@ -1,44 +1,109 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
+import Header from '../../partials/Header';
+import Footer from '../../partials/Footer';
+import InfoBox from '../../components/InfoBox';
+import Pagination from '../../components/Pagination';
+import Filters from '../../components/Filters';
+import ListItem from './ListItem';
+
+import CONSTANTS from '../../assets/javascripts/constants';
 
 class List extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filter: 'popular',
+      page: 1,
+    };
+  }
+
+  componentDidMount() {
+    const { filter, page } = this.state;
+    const { getMovies } = this.props;
+
+    getMovies(filter, page);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { filter, page } = this.state;
+    const { movies } = this.props;
+
+    return (
+      page !== nextState.page ||
+      filter !== nextState.filter ||
+      !isEqual(movies, nextProps.movies)
+    );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { filter, page } = this.state;
+    const { getMovies } = this.props;
+
+    if (filter !== prevState.filter) {
+      console.debug(filter, page);
+      getMovies(filter, page);
+    }
+  }
+
+  getItems() {
+    const { movies } = this.props;
+
+    return movies.map(mv => (
+      <ListItem key={`movie-${mv.id}`} data={mv} />
+    ));
+  }
+
   render() {
+    const { totalPages, totalResults } = this.props;
     return (
       <div className="list-page">
-        <nav className="navbar is-white">
-          <div className="container">
-            <div class="navbar-start">
-              <div className="navbar-brand">
-                <a className="navbar-item brand-text" href="../">MoVieS</a>
-                <div className="navbar-burger burger" data-target="navMenu">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+        <Header />
+        <div className="container is-fluid list-page-content">
+          <InfoBox
+            totalPages={totalPages}
+            totalResults={totalResults}
+            page={1}
+            itemPerPage={CONSTANTS.itemPerPage}
+          />
+          <div className="navbar options-bar">
+            <div className="container is-widescreen">
+              <div className="navbar-start">
+                <Pagination />
               </div>
-            </div>
-          
-            <div className="navbar-end">
-              {/* <div id="navMenu" className="navbar-menu">
-                <div className="navbar-start">
-                  <a className="navbar-item" href="admin.html">Home</a>
-                </div>
-              </div> */}
-              <div className="field ">
-              <div className="control has-icons-right">
-                <input className="input is-small" type="text" placeholder="Search a movie" />
-                <span className="icon is-small is-right">
-                  <i className="fas fa-search" />
-                </span>
-              </div>
-              </div>
+              <Filters
+                filterBy={(filterName) => {
+                  this.setState({
+                    filter: filterName,
+                  });
+                }}
+              />
             </div>
           </div>
-        </nav>
-        <div className="container list-page-content">
+          <div className="columns is-multiline">
+            {this.getItems()}
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
 }
+
+List.propTypes = {
+  getMovies: PropTypes.func,
+  movies: PropTypes.arrayOf(PropTypes.object),
+  totalResults: PropTypes.number,
+  totalPages: PropTypes.number,
+};
+
+List.defaultProps = {
+  getMovies: () => {},
+  movies: [],
+  totalResults: 0,
+  totalPages: 0,
+};
 
 export default List;
