@@ -1,0 +1,19 @@
+.list-page{
+  .list-page-content {
+    margin: 32px;
+
+    .options-bar {
+      margin-bottom: 1.2em;
+      border-bottom: 1px solid #EEE;
+
+      .navbar-item {
+        font-size: 0.8em;
+        padding: 0 0.5rem;
+
+        &.selected {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

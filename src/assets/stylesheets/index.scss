@@ -1,4 +1,6 @@
 @import '../../../node_modules/bulma/css/bulma.css';
 @import '../../../node_modules/font-awesome/css/font-awesome.min.css'; 
 
-@import '../../pages/List/List.css';
+@import './helpers';
+
+@import '../../pages/List/List.scss';
