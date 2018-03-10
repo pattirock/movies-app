@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { reducers as movieReducer } from '../modules/movies';
+import { reducers as filtersReducer } from '../modules/filters';
+import { reducers as moviesReducer } from '../modules/movies';
 
 const rootReducer = combineReducers(Object.assign(
   {},
-  movieReducer,
+  filtersReducer,
+  moviesReducer,
 ));
 
 export default rootReducer;
