@@ -5,6 +5,7 @@ import { changePage } from '../../modules/filters/actions';
 
 const mapStateToProps = state => ({
   currentPage: state.filters.page,
+  totalPages: state.movies.total_pages,
 });
 
 const mapDispatchToProps = dispatch => ({

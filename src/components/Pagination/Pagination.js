@@ -109,26 +109,29 @@ class Pagination extends Component {
   render() {
     const { className, totalPages } = this.props;
     return (
-      <nav
-        className={`pagination is-small ${className}`}
-        aria-label="pagination"
-      >
-        <a
-          className="pagination-previous"
-          onClick={() => this.handlePreviousPage()}
+      <div className={className}>
+        <nav
+          className="pagination is-centered"
+          aria-label="pagination"
         >
-          &lt;
-        </a>
-        <a
-          className="pagination-next"
-          onClick={() => this.handleNextPage()}
-        >
-          &gt;
-        </a>
-        <ul className="pagination-list">
-          {this.getListPages(totalPages)}
-        </ul>
-      </nav>
+          <a
+            className="pagination-previous"
+            onClick={() => this.handlePreviousPage()}
+          >
+            Previous
+          </a>
+          <a
+            className="pagination-next"
+            onClick={() => this.handleNextPage()}
+          >
+            Next
+          </a>
+          <ul className="pagination-list">
+            {this.getListPages(totalPages)}
+          </ul>
+        </nav>
+        {/* <p>{currentPage} of {totalPages}</p> */}
+      </div>
     );
   }
 }

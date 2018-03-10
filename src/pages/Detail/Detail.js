@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 import Header from '../../partials/Header';
 import Footer from '../../partials/Footer';
+import InfoBox from '../../components/InfoBox';
 import { getYear } from '../../assets/javascripts/utils';
+import './Detail.scss';
 
 const durationToHours = (min) => {
   const hours = Math.floor(min / 60);
@@ -44,17 +47,31 @@ class Detail extends Component {
           <Header />
         </div>
         <div className="hero-body">
-          <div className="container has-text-centered">
+          <div className="container">
+            <Link to="/" className="is-6 back-button" data-tool="Back">&lt;&lt;</Link>
+            <InfoBox
+              className="info-box"
+              voteAverage={vote_average}
+              voteCount={vote_count}
+              duration={durationToHours(runtime)}
+              language="English"
+            />
             <div className="columns is-vcentered">
               <div className="column is-5">
                 <figure className="image is-square">
                   <img src={`http://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
                 </figure>
               </div>
-              <div className="column is-6 is-offset-1">
+              <div className="column is-6 is-offset-1 has-text-centered">
                 <p><span className="title">{title}</span> <span className="subtitle">[{getYear(release_date)}]</span></p>
-                <p>Duration: {durationToHours(runtime)} | Genres: {genresToString(genres)}</p>
-                <p>Vote average: {vote_average}/10 | Number of votes: {vote_count}</p>
+                <p>{genresToString(genres)}</p>
+                {/* <div className="c100 p25 small green">
+                  <span>25%</span>
+                  <div className="slice">
+                    <div className="bar" />
+                    <div className="fill" />
+                  </div>
+                </div> */}
                 <br />
                 <p className="has-text-centered">
                   {overview}
@@ -66,6 +83,11 @@ class Detail extends Component {
         <div className="hero-foot">
           <Footer />
         </div>
+        {/* <div className="box cta">
+          <p className="has-text-centered">
+            <span className="tag is-primary">New</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div> */}
       </section>
     );
   }

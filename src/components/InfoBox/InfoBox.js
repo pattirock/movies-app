@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './InfoBox.scss';
 
 const InfoBox = ({
-  itemPerPage, page, totalPages, totalResults, className,
+  voteAverage, voteCount, duration, className, language,
 }) => (
   <nav className={`level ${className}`}>
     <div className="level-item has-text-centered">
       <div>
-        <p className="heading">Current Page</p>
-        <p className="title">{page}</p>
+        <p className="heading">Rating</p>
+        <p className="title">{voteAverage}/10</p>
       </div>
     </div>
     <div className="level-item has-text-centered">
       <div>
-        <p className="heading">Items x Page</p>
-        <p className="title">{itemPerPage}</p>
+        <p className="heading">Votes</p>
+        <p className="title">{voteCount}</p>
       </div>
     </div>
     <div className="level-item has-text-centered">
       <div>
-        <p className="heading">Total Pages</p>
-        <p className="title">{totalPages}</p>
+        <p className="heading">Duration</p>
+        <p className="title">{duration}</p>
       </div>
     </div>
     <div className="level-item has-text-centered">
       <div>
-        <p className="heading">Total Results</p>
-        <p className="title">{totalResults}</p>
+        <p className="heading">Language</p>
+        <p className="title">{language}</p>
       </div>
     </div>
   </nav>
@@ -35,18 +34,18 @@ const InfoBox = ({
 
 InfoBox.propTypes = {
   className: PropTypes.string,
-  itemPerPage: PropTypes.number,
-  page: PropTypes.number,
-  totalResults: PropTypes.number,
-  totalPages: PropTypes.number,
+  duration: PropTypes.number,
+  language: PropTypes.string,
+  voteAverage: PropTypes.number,
+  voteCount: PropTypes.number,
 };
 
 InfoBox.defaultProps = {
   className: '',
-  itemPerPage: 0,
-  page: 0,
-  totalResults: 0,
-  totalPages: 0,
+  duration: 0,
+  language: '',
+  voteAverage: 0,
+  voteCount: 0,
 };
 
 export default InfoBox;

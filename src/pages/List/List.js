@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 import Header from '../../partials/Header';
 import Footer from '../../partials/Footer';
-import InfoBox from '../../components/InfoBox';
 import Pagination from '../../components/Pagination';
 import Filters from '../../components/Filters';
 import ListItem from './ListItem';
 
-import CONSTANTS from '../../assets/javascripts/constants';
-
+/* eslint-disable max-len, jsx-a11y/anchor-is-valid */
 class List extends Component {
   componentDidMount() {
     const { getMovies, currentPage, filter } = this.props;
@@ -44,31 +42,24 @@ class List extends Component {
   }
 
   render() {
-    const { totalPages, totalResults, currentPage } = this.props;
     return (
       <div className="list-page">
         <Header />
         <div className="container is-fluid list-page-content">
-          <InfoBox
-            totalPages={totalPages}
-            totalResults={totalResults}
-            page={currentPage}
-            itemPerPage={CONSTANTS.itemPerPage}
-          />
           <div className="navbar options-bar">
             <div className="container is-widescreen">
-              <div className="navbar-start">
-                <Pagination
-                  totalPages={totalPages}
-                />
-              </div>
               <Filters
-                className="movie-filters"
+                className="navbar-end movie-filters"
               />
             </div>
           </div>
           <div className="columns is-multiline">
             {this.getItems()}
+          </div>
+        </div>
+        <div className="container is-widescreen u-m-30">
+          <div className="columns is-centered">
+            <Pagination className="column is-6" />
           </div>
         </div>
         <Footer />
@@ -82,8 +73,6 @@ List.propTypes = {
   filter: PropTypes.string,
   getMovies: PropTypes.func,
   movies: PropTypes.arrayOf(PropTypes.object),
-  totalResults: PropTypes.number,
-  totalPages: PropTypes.number,
 };
 
 List.defaultProps = {
@@ -91,8 +80,6 @@ List.defaultProps = {
   filter: 'popular',
   getMovies: () => {},
   movies: [],
-  totalResults: 0,
-  totalPages: 0,
 };
 
 export default List;

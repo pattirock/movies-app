@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
+/* eslint-disable jsx-a11y/anchor-is-valid */
 const Header = () => (
-  <nav className="navbar is-white has-shadow">
+  <nav className="navbar is-dark">
     <div className="container">
       <div className="navbar-start">
         <div className="navbar-brand">
-          <a className="navbar-item brand-text" href="../">MoVieS</a>
+          <Link to="/" className="navbar-item brand-text">MoVieS</Link>
           <div className="navbar-burger burger" data-target="navMenu">
             <span />
             <span />
@@ -15,17 +17,9 @@ const Header = () => (
         </div>
       </div>
       <div className="navbar-end">
-        {/* <div id="navMenu" className="navbar-menu">
-          <div className="navbar-start">
-            <a className="navbar-item" href="admin.html">Home</a>
-          </div>
-        </div> */}
         <div className="field ">
           <div className="control has-icons-right">
             <input className="input is-small" type="text" placeholder="Search a movie" />
-            <span className="icon is-small is-right">
-              <i className="fas fa-search" />
-            </span>
           </div>
         </div>
       </div>

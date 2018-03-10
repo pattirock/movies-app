@@ -10,7 +10,7 @@ const filters = CONSTANTS.movieFilters;
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, jsx-a11y/anchor-is-valid, max-len */
 const Filters = ({ className, filterBy, filterName }) => (
   <div
-    className={`navbar-end is-hidden-mobile ${className}`}
+    className={`is-hidden-mobile ${className}`}
   >
     <span className="navbar-item has-text-weight-semibold">Filters:</span>
     {filters && filters.map(f => (

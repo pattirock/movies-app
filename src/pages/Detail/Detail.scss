@@ -1,0 +1,25 @@
+.hero {
+  .navbar {
+    background-color: #363636;
+  }
+
+  .hero-body {
+    padding: 0;
+
+    .info-box {
+      padding: 20px;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .back-button {
+      padding: 10px 0;
+      display: block;
+      color: #363636;
+    
+      &:hover {
+        background-color: #FFF;
+        color: #00d1b2;
+      }
+    }
+  }
+}
