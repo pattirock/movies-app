@@ -1,7 +1,7 @@
 import * as creators from './creators';
 
-export const filterBy = (filterName, page) => (
-  dispatch => dispatch(creators.filterBy(filterName, page))
+export const filterBy = filterName => (
+  dispatch => dispatch(creators.filterBy(filterName))
 );
 
 export const changePage = page => (

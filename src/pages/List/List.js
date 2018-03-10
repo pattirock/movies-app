@@ -11,39 +11,26 @@ import ListItem from './ListItem';
 import CONSTANTS from '../../assets/javascripts/constants';
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filter: props.filter,
-    };
-  }
-
   componentDidMount() {
-    const { getMovies, currentPage } = this.props;
-    const { filter } = this.state;
+    const { getMovies, currentPage, filter } = this.props;
 
     getMovies(filter, currentPage);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { movies, currentPage } = this.props;
-    const { filter } = this.state;
-
-    console.debug(currentPage);
+  shouldComponentUpdate(nextProps) {
+    const { movies, currentPage, filter } = this.props;
 
     return (
       currentPage !== nextProps.currentPage ||
-      filter !== nextState.filter ||
+      filter !== nextProps.filter ||
       !isEqual(movies, nextProps.movies)
     );
   }
 
   componentDidUpdate(prevProps) {
-    const { getMovies, currentPage } = this.props;
-    const { filter } = this.state;
+    const { getMovies, currentPage, filter } = this.props;
 
-    if (filter !== prevProps.filter) {
+    if (filter !== prevProps.filter || currentPage !== prevProps.currentPage) {
       getMovies(filter, currentPage);
     }
   }
@@ -77,11 +64,6 @@ class List extends Component {
               </div>
               <Filters
                 className="movie-filters"
-                filterBy={(filterName) => {
-                  this.setState({
-                    filter: filterName,
-                  });
-                }}
               />
             </div>
           </div>

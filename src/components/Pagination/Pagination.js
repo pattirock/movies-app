@@ -5,20 +5,25 @@ import CONSTANTS from '../../assets/javascripts/constants';
 // import './Pagination.scss';
 
 /* eslint-disable jsx-a11y/anchor-is-valid, no-continue, no-plusplus, jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions, max-len */
-const getPageElement = (currentPage, index) => (
-  <li
-    key={`page-${index + 1}`}
-  >
-    <a
-      className={classnames('pagination-link', { 'is-current': index + 1 === currentPage })}
-      aria-label={`Goto page ${index + 1}`}
-    >
-      {index + 1}
-    </a>
-  </li>
-);
-
 class Pagination extends Component {
+  getPageElement(currentPage, index) {
+    const { handlePageSelected } = this.props;
+    const page = index + 1;
+    return (
+      <li
+        key={`page-${page}`}
+      >
+        <a
+          className={classnames('pagination-link', { 'is-current': page === currentPage })}
+          aria-label={`Goto page ${page}`}
+          onClick={() => handlePageSelected(page)}
+        >
+          {page}
+        </a>
+      </li>
+    );
+  }
+
   getListPages() {
     const items = [];
     const {
@@ -31,7 +36,7 @@ class Pagination extends Component {
 
     if (totalPages <= pageRangeDisplayed) {
       for (let index = 0; index < totalPages; index++) {
-        items.push(getPageElement(index));
+        items.push(this.getPageElement(index));
       }
     } else {
       let leftSide = (pageRangeDisplayed / 2);
@@ -47,7 +52,7 @@ class Pagination extends Component {
 
       let page;
       let breakView;
-      const createPageView = index => getPageElement(currentPage, index);
+      const createPageView = index => this.getPageElement(currentPage, index);
 
       for (let index = 0; index < totalPages; index++) {
         page = index + 1;
@@ -74,7 +79,7 @@ class Pagination extends Component {
 
         if (breakLabel && breakLabelValue !== breakView) {
           breakView = (
-            <li key="break"><span className="pagination-ellipsis">&hellip;</span></li>
+            <li key={`break-${breakLabelKey}`}><span className="pagination-ellipsis">&hellip;</span></li>
           );
 
           items.push(breakView);

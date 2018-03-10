@@ -7,9 +7,9 @@ const filtersReducer = (filters = initialState, action) => {
 
   switch (type) {
     case types.FILTER_BY: {
-      const { filterName, page } = action;
+      const { filterName } = action;
 
-      return { filterName, page };
+      return Object.assign({}, { page: 1, filter: filterName });
     }
     case types.CHANGE_PAGE: {
       const { page } = action;

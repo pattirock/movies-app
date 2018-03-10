@@ -1,9 +1,8 @@
 import types from './types';
 
-export const filterBy = (filterName, page) => ({
+export const filterBy = filterName => ({
   type: types.FILTER_BY,
   filterName,
-  page,
 });
 
 export const changePage = page => ({
