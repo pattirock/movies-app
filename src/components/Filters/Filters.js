@@ -7,7 +7,7 @@ import './Filters.scss';
 
 const filters = CONSTANTS.movieFilters;
 
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, jsx-a11y/anchor-is-valid, max-len */
 const Filters = ({ className, filterBy, filterName }) => (
   <div
     className={`navbar-end is-hidden-mobile ${className}`}
@@ -27,13 +27,12 @@ const Filters = ({ className, filterBy, filterName }) => (
 Filters.propTypes = {
   className: PropTypes.string,
   filterBy: PropTypes.func,
-  filterName: PropTypes.string,
+  filterName: PropTypes.string.isRequired,
 };
 
 Filters.defaultProps = {
   className: '',
   filterBy: () => {},
-  filterName: '',
 };
 
 export default Filters;
