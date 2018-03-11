@@ -16,12 +16,6 @@ const HeaderSticky = () => (
               <span />
             </div>
           </div>
-          <div id="navMenu" className="navbar-menu">
-            <div className="navbar-end">
-              <Link to="/" className="navbar-item " data-tool="Home">Home</Link>
-              <a className="navbar-item">Examples</a>
-            </div>
-          </div>
         </div>
       </nav>
     </div>
