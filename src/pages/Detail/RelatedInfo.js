@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { renderCards } from './utils';
+import { renderCast, renderImages, renderRecommendations } from './utils';
 import './RelatedInfo.scss';
 
 class RelatedInfo extends Component {
@@ -17,7 +17,7 @@ class RelatedInfo extends Component {
 
   render() {
     const { tabSelected } = this.state;
-    const { cast } = this.props;
+    const { cast, images, recommendations } = this.props;
 
     return (
       <div className="columns related-info">
@@ -37,18 +37,24 @@ class RelatedInfo extends Component {
                 className={classnames({ 'is-active': tabSelected === 'photos' })}
               >
                 <a
-                  onClick={() => this.setState({ tabSelected: 'photos' })}
+                  onClick={() => {
+                    this.setState({ tabSelected: 'photos' });
+                    this.props.handleClickPhotos();
+                  }}
                 >
                   Photos
                 </a>
               </li>
               <li
-                className={classnames({ 'is-active': tabSelected === 'videos' })}
+                className={classnames({ 'is-active': tabSelected === 'recommendations' })}
               >
                 <a
-                  onClick={() => this.setState({ tabSelected: 'videos' })}
+                  onClick={() => {
+                    this.setState({ tabSelected: 'recommendations' });
+                    this.props.handleClickRecommendations();
+                  }}
                 >
-                  Videos
+                  Recommendations
                 </a>
               </li>
             </ul>
@@ -57,21 +63,19 @@ class RelatedInfo extends Component {
             id="cast-tab-content"
             className={classnames({ 'is-hidden': tabSelected !== 'cast' })}
           >
-            <ol className="people">
-              {renderCards(cast)}
-            </ol>
+            {renderCast(cast)}
           </div>
           <div
             id="photos-tab-content"
             className={classnames({ 'is-hidden': tabSelected !== 'photos' })}
           >
-            <h1 className="title">Here will be the contents of the Photos tab</h1>
+            {renderImages(images.posters)}
           </div>
           <div
-            id="videos-tab-content"
-            className={classnames({ 'is-hidden': tabSelected !== 'videos' })}
+            id="recommendations-tab-content"
+            className={classnames({ 'is-hidden': tabSelected !== 'recommendations' })}
           >
-            <h1 className="title">Here will be the contents of the Videos tab</h1>
+            {renderRecommendations(recommendations.results)}
           </div>
         </div>
       </div>);
@@ -79,6 +83,8 @@ class RelatedInfo extends Component {
 }
 
 RelatedInfo.propTypes = {
+  handleClickPhotos: PropTypes.func,
+  handleClickRecommendations: PropTypes.func,
   cast: PropTypes.arrayOf(PropTypes.shape({
     cast_id: PropTypes.number,
     character: PropTypes.string,
@@ -89,10 +95,25 @@ RelatedInfo.propTypes = {
     order: PropTypes.number,
     profile_path: PropTypes.string,
   })),
+  images: PropTypes.shape({
+    id: PropTypes.number,
+    backdrops: PropTypes.array,
+    posters: PropTypes.array,
+  }),
+  recommendations: PropTypes.shape({
+    page: PropTypes.number,
+    results: PropTypes.array,
+    total_pages: PropTypes.number,
+    total_results: PropTypes.number,
+  }),
 };
 
 RelatedInfo.defaultProps = {
+  handleClickPhotos: () => {},
+  handleClickRecommendations: () => {},
   cast: [],
+  images: {},
+  recommendations: {},
 };
 
 export default RelatedInfo;

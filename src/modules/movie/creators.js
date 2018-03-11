@@ -1,7 +1,6 @@
 import types from './types';
 import apiKey from '../../api/constants';
 
-/* eslint-disable import/prefer-default-export */
 export const getMovie = movieId => ({
   type: types.GET_MOVIE,
   payload: {
@@ -16,6 +15,24 @@ export const getCredits = movieId => ({
   payload: {
     request: {
       url: `/movie/${movieId}/credits?api_key=${apiKey}`,
+    },
+  },
+});
+
+export const getImages = movieId => ({
+  type: types.GET_MOVIE_IMAGES,
+  payload: {
+    request: {
+      url: `/movie/${movieId}/images?api_key=${apiKey}`,
+    },
+  },
+});
+
+export const getRecommendations = movieId => ({
+  type: types.GET_MOVIE_RECOMMENDATIONS,
+  payload: {
+    request: {
+      url: `/movie/${movieId}/recommendations?api_key=${apiKey}`,
     },
   },
 });

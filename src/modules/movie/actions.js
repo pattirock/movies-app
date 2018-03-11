@@ -7,3 +7,11 @@ export const getMovie = movieId => (
 export const getCredits = movieId => (
   dispatch => dispatch(creators.getCredits(movieId))
 );
+
+export const getImages = movieId => (
+  dispatch => dispatch(creators.getImages(movieId))
+);
+
+export const getRecommendations = movieId => (
+  dispatch => dispatch(creators.getRecommendations(movieId))
+);

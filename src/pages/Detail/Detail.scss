@@ -39,85 +39,26 @@
       padding: 0;
       display: flex;
       overflow: scroll;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin-top: 10px;
 
-      &.no-image {
-        margin-top: 0;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-
-        li {
-          width: 33%;
-          text-align: left;
-          margin-bottom: 14px;
-          margin-right: 0;
-          box-sizing: border-box;
-          padding-right: 20px;
-
-          &.card {
-            border: 0;
-            box-shadow: none;
-            margin: 0;
-            padding: 0;
-
-            p {
-              padding-left: 0;
-            }
-          }
-
-          .image,
-          .image-not-found {
-            display: none;
-          }
-        }
-      }
-      
       li {
+        width: 142px;
+        text-align: left;
+        margin-bottom: 14px;
+        box-sizing: border-box;
+        padding-right: 5px;
         background-color: #fff;
         box-sizing: border-box;
         margin-right: 10px;
 
-        &.card {
-          padding-bottom: 10px;
-          min-width: 150px;
-          margin: 1px 10px 1px 1px;
-
-          .image {
-            img {
-              min-height: 225px;
-            }
-          }
-
-          .image-not-found {
-            min-height: 225px;
-            min-width: 150px;
-            background-color: whitesmoke;
-            background-image: url('../../assets/images/no-image.png');
-            background-size: 120px;
-            background-repeat: no-repeat;
-            background-position: center;
-          }
-
-          &:last-child {
-            margin-right: 0;
-          }
-
-          & > a {
-            width: 151px;
-            display: block;
-          }
-        }
-
         p {
-          padding: 0 10px;
           font-size: 1em;
           line-height: 1.4em;
           margin: 0;
           overflow: hidden;
           text-overflow: ellipsis;
-
-          &:first-of-type {
-            padding: 10px 10px 0 10px;
-          }
 
           &.name {
             font-size: 0.9em;

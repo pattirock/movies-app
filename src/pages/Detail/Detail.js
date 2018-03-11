@@ -7,7 +7,7 @@ import HeaderSticky from '../../partials/HeaderSticky';
 import Footer from '../../partials/Footer';
 import InfoBox from '../../components/InfoBox';
 import { getYear } from '../../assets/javascripts/utils';
-import { durationToHours, genresTags, renderCards } from './utils';
+import { durationToHours, genresTags, renderListCrew } from './utils';
 import RelatedInfo from './RelatedInfo';
 import './Detail.scss';
 
@@ -23,6 +23,7 @@ class Detail extends Component {
     const { getMovie, match: { params: { id } } } = this.props;
 
     if (id) {
+      this.movieId = id;
       getMovie(id);
     }
   }
@@ -45,6 +46,8 @@ class Detail extends Component {
       },
       crew,
       cast,
+      images,
+      recommendations,
     } = this.props;
     return (
       <section className="hero is-default is-bold detail-page">
@@ -53,46 +56,45 @@ class Detail extends Component {
         </div>
         <div className="hero-body">
           <div className="container">
-            <InfoBox
-              className="info-box"
-              voteAverage={vote_average}
-              voteCount={vote_count}
-              duration={durationToHours(runtime)}
-              language="English"
-            />
-            <div className="columns">
-              <div className="column is-4 detail-image">
-                <figure className="image is-square">
-                  <img src={`http://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
-                </figure>
-              </div>
-              <div className="column is-8 detail-info">
-                <p>
-                  <span className="title">{title}</span>
-                  <span className="subtitle">&nbsp;[{getYear(release_date)}]</span>
-                </p>
-                <p className="genres">{genresTags(genres)}</p>
-                {/* <div className="c100 p25 small green">
-                  <span>25%</span>
-                  <div className="slice">
-                    <div className="bar" />
-                    <div className="fill" />
+            <div className="columns is-centered">
+              <div className="column is-four-fifth-mobile is-four-fifth-tablet is-three-quarters-desktop is-two-thirds-widescreen is-two-thirds-fullhd">
+                <InfoBox
+                  className="info-box"
+                  voteAverage={vote_average}
+                  voteCount={vote_count}
+                  duration={durationToHours(runtime)}
+                  language="English"
+                />
+                <div className="columns">
+                  <div className="column is-4 detail-image">
+                    <figure className="image is-square">
+                      <img src={`http://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
+                    </figure>
                   </div>
-                </div> */}
-                <h4 className="has-text-left has-text-weight-bold is-size-6">Overview</h4>
-                <p >
-                  {overview}
-                </p>
-                <h4 className="has-text-left has-text-weight-bold is-size-6">Featured Team</h4>
-                <ol className="people no-image">
-                  {renderCards(crew, 18)}
-                </ol>
+                  <div className="column is-8 detail-info">
+                    <p>
+                      <span className="title">{title}</span>
+                      <span className="subtitle">&nbsp;[{getYear(release_date)}]</span>
+                    </p>
+                    <div className="genres">{genresTags(genres)}</div>
+                    <h4 className="has-text-left has-text-weight-bold is-size-6">Overview</h4>
+                    <p >
+                      {overview}
+                    </p>
+                    <h4 className="has-text-left has-text-weight-bold is-size-6">Featured Team</h4>
+                    {renderListCrew(crew, 16)}
+                  </div>
+                </div>
+
+                <RelatedInfo
+                  cast={cast}
+                  images={images}
+                  recommendations={recommendations}
+                  handleClickPhotos={() => this.movieId && this.props.getImages(this.movieId)}
+                  handleClickRecommendations={() => this.movieId && this.props.getRecommendations(this.movieId)}
+                />
               </div>
             </div>
-
-            <RelatedInfo
-              cast={cast}
-            />
           </div>
         </div>
         <div className="hero-foot">
@@ -105,6 +107,8 @@ class Detail extends Component {
 
 Detail.propTypes = {
   getMovie: PropTypes.func,
+  getImages: PropTypes.func,
+  getRecommendations: PropTypes.func,
   match: PropTypes.shape({
     isExact: PropTypes.bool,
     params: PropTypes.object,
@@ -131,14 +135,29 @@ Detail.propTypes = {
     name: PropTypes.string,
     profile_path: PropTypes.string,
   })),
+  images: PropTypes.shape({
+    id: PropTypes.number,
+    backdrops: PropTypes.array,
+    posters: PropTypes.array,
+  }),
+  recommendations: PropTypes.shape({
+    page: PropTypes.number,
+    results: PropTypes.array,
+    total_pages: PropTypes.number,
+    total_results: PropTypes.number,
+  }),
 };
 
 Detail.defaultProps = {
   getMovie: () => {},
+  getImages: () => {},
+  getRecommendations: () => {},
   match: {},
   movie: {},
   cast: [],
   crew: [],
+  images: {},
+  recommendations: {},
 };
 
 export default Detail;
