@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const toTitleCase = (str) => {
   const str1 = str.replace(/_/g, ' ');
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CONSTANTS from '../../assets/javascripts/constants';
-// import './Pagination.scss';
 
 /* eslint-disable jsx-a11y/anchor-is-valid, no-continue, no-plusplus, jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions, max-len */
 class Pagination extends Component {
