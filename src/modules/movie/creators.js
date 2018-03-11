@@ -11,3 +11,11 @@ export const getMovie = movieId => ({
   },
 });
 
+export const getCredits = movieId => ({
+  type: types.GET_MOVIE_CREDITS,
+  payload: {
+    request: {
+      url: `/movie/${movieId}/credits?api_key=${apiKey}`,
+    },
+  },
+});

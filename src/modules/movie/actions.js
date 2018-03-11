@@ -1,6 +1,9 @@
 import * as creators from './creators';
 
-/* eslint-disable import/prefer-default-export */
 export const getMovie = movieId => (
   dispatch => dispatch(creators.getMovie(movieId))
+);
+
+export const getCredits = movieId => (
+  dispatch => dispatch(creators.getCredits(movieId))
 );

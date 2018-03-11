@@ -1,24 +1,73 @@
-.hero {
-  .navbar {
-    background-color: #363636;
-  }
-
-  .hero-body {
-    padding: 0;
-
-    .info-box {
-      padding: 20px;
-      border-bottom: 1px solid #ececec;
+.detail-page {
+  &.hero {
+    .navbar {
+      background-color: #363636;
     }
 
-    .back-button {
-      padding: 10px 0;
-      display: block;
-      color: #363636;
-    
-      &:hover {
-        background-color: #FFF;
-        color: #00d1b2;
+    .hero-body {
+      padding: 0;
+
+      .info-box {
+        padding: 20px;
+        border-bottom: 1px solid #ececec;
+      }
+      
+      .recommend-movies {
+        margin-top: 2rem;
+        border: 1px solid whitesmoke;
+      }
+    }
+  }
+
+  .recommend-movies {
+    .tabs {
+      margin-bottom: 1rem;
+    }
+
+    ol {
+      &.people {
+        list-style-type: none;
+        list-style-position: inside;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        
+        li {
+          background-color: #fff;
+          box-sizing: border-box;
+          margin-right: 10px;
+
+          &.card {
+            padding-bottom: 10px;
+
+            & > a {
+              width: 151px;
+              display: block;
+            }
+          }
+
+          p {
+            padding: 0 10px;
+            font-size: 1em;
+            line-height: 1.4em;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:first-of-type {
+              padding: 10px 10px 0 10px;
+            }
+
+            &.name {
+              font-size: 0.9em;
+              font-weight: bold;
+            }
+
+            &.job {
+              font-size: 0.8em;
+            }
+          }
+        }
       }
     }
   }
