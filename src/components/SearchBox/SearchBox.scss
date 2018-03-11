@@ -1,0 +1,21 @@
+.search-box {
+  background: white;
+  padding: 0 20px;
+  margin-top: 10px;
+
+  .control {
+    margin-top: 12px;
+    
+    .input {
+      border: 0;
+      border-bottom: 1px solid #dbdbdb;
+      box-shadow: none;
+      border-radius: 0;
+      width: 400px;
+  
+      &.is-small {
+        font-size: 0.80rem;
+      }
+    }
+  }
+}

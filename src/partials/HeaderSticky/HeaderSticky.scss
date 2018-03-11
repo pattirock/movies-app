@@ -1,0 +1,30 @@
+.hero {
+  .hero-head {
+    .nabvar {
+      border-top: 1px solid white;
+      background: none;
+  
+      &.has-shadow {
+        box-shadow: 0 2px 3px rgba(17,17,17,.1);
+      }
+    }
+
+    .is-dark {
+      .navbar-end {
+        & > a {
+          &.navbar-item {
+            &:hover,
+            &.is-active {
+              background: #ff3860;
+            }
+          }
+        }
+      }
+    }
+
+    .brand-text {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+    }
+  }
+}

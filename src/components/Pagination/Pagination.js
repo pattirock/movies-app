@@ -111,7 +111,7 @@ class Pagination extends Component {
     return (
       <div className={className}>
         <nav
-          className="pagination is-centered"
+          className="pagination is-centered is-small"
           aria-label="pagination"
         >
           <a
@@ -130,7 +130,6 @@ class Pagination extends Component {
             {this.getListPages(totalPages)}
           </ul>
         </nav>
-        {/* <p>{currentPage} of {totalPages}</p> */}
       </div>
     );
   }

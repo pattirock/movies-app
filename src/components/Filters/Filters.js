@@ -12,7 +12,7 @@ const Filters = ({ className, filterBy, filterName }) => (
   <div
     className={`is-hidden-mobile ${className}`}
   >
-    <span className="navbar-item has-text-weight-semibold">Filters:</span>
+    <span className="navbar-item has-text-weight-semibold">FILTERS:</span>
     {filters && filters.map(f => (
       <a
         key={`filter-${f}`}

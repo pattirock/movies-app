@@ -4,8 +4,8 @@ import { isEqual } from 'lodash';
 import Header from '../../partials/Header';
 import Footer from '../../partials/Footer';
 import Pagination from '../../components/Pagination';
-import Filters from '../../components/Filters';
 import ListItem from './ListItem';
+import './List.scss';
 
 /* eslint-disable max-len, jsx-a11y/anchor-is-valid */
 class List extends Component {
@@ -45,21 +45,14 @@ class List extends Component {
     return (
       <div className="list-page">
         <Header />
-        <div className="container is-fluid list-page-content">
-          <div className="navbar options-bar">
-            <div className="container is-widescreen">
-              <Filters
-                className="navbar-end movie-filters"
-              />
-            </div>
-          </div>
-          <div className="columns is-multiline">
+        <div className="container is-widescreen list-page-content">
+          <div className="columns is-multiline is-gapless">
             {this.getItems()}
           </div>
         </div>
-        <div className="container is-widescreen u-m-30">
+        <div className="container u-m-20">
           <div className="columns is-centered">
-            <Pagination className="column is-6" />
+            <Pagination className="column is-5" />
           </div>
         </div>
         <Footer />

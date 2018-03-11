@@ -34,7 +34,7 @@ const InfoBox = ({
 
 InfoBox.propTypes = {
   className: PropTypes.string,
-  duration: PropTypes.number,
+  duration: PropTypes.string,
   language: PropTypes.string,
   voteAverage: PropTypes.number,
   voteCount: PropTypes.number,
@@ -42,7 +42,7 @@ InfoBox.propTypes = {
 
 InfoBox.defaultProps = {
   className: '',
-  duration: 0,
+  duration: '',
   language: '',
   voteAverage: 0,
   voteCount: 0,
