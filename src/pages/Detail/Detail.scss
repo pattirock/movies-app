@@ -11,61 +11,121 @@
         padding: 20px;
         border-bottom: 1px solid #ececec;
       }
-      
-      .recommend-movies {
-        margin-top: 2rem;
-        border: 1px solid whitesmoke;
+
+      .detail-image {
+        margin-top: 1.2rem;
+      }
+
+      .detail-info {
+        padding: 1.5rem 1.5rem 0 1.5rem;
+
+        h4 {
+          margin-top: 1rem;
+        }
+
+        .genres {
+          margin-top: 0.5rem;
+          font-size: 0.9rem;
+        }
       }
     }
   }
 
-  .recommend-movies {
-    .tabs {
-      margin-bottom: 1rem;
-    }
+  ol {
+    &.people {
+      list-style-type: none;
+      list-style-position: inside;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      overflow: scroll;
 
-    ol {
-      &.people {
-        list-style-type: none;
-        list-style-position: inside;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        
+      &.no-image {
+        margin-top: 0;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
         li {
-          background-color: #fff;
+          width: 33%;
+          text-align: left;
+          margin-bottom: 14px;
+          margin-right: 0;
           box-sizing: border-box;
-          margin-right: 10px;
+          padding-right: 20px;
 
           &.card {
-            padding-bottom: 10px;
+            border: 0;
+            box-shadow: none;
+            margin: 0;
+            padding: 0;
 
-            & > a {
-              width: 151px;
-              display: block;
+            p {
+              padding-left: 0;
             }
           }
 
-          p {
-            padding: 0 10px;
-            font-size: 1em;
-            line-height: 1.4em;
-            margin: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
+          .image,
+          .image-not-found {
+            display: none;
+          }
+        }
+      }
+      
+      li {
+        background-color: #fff;
+        box-sizing: border-box;
+        margin-right: 10px;
 
-            &:first-of-type {
-              padding: 10px 10px 0 10px;
-            }
+        &.card {
+          padding-bottom: 10px;
+          min-width: 150px;
+          margin: 1px 10px 1px 1px;
 
-            &.name {
-              font-size: 0.9em;
-              font-weight: bold;
+          .image {
+            img {
+              min-height: 225px;
             }
+          }
 
-            &.job {
-              font-size: 0.8em;
-            }
+          .image-not-found {
+            min-height: 225px;
+            min-width: 150px;
+            background-color: whitesmoke;
+            background-image: url('../../assets/images/no-image.png');
+            background-size: 120px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          & > a {
+            width: 151px;
+            display: block;
+          }
+        }
+
+        p {
+          padding: 0 10px;
+          font-size: 1em;
+          line-height: 1.4em;
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &:first-of-type {
+            padding: 10px 10px 0 10px;
+          }
+
+          &.name {
+            font-size: 0.9em;
+            font-weight: bold;
+          }
+
+          &.job {
+            font-size: 0.8em;
           }
         }
       }
