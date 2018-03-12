@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import List from './List';
 
-import { getMovies } from '../../modules/movies/actions';
+import { getMovies, resetMovies } from '../../modules/movies/actions';
 
 const mapStateToProps = state => ({
   movies: state.movies.results,
@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
   getMovies: (filter, page) => {
     dispatch(getMovies(filter, page));
   },
+  resetMovies: () => dispatch(resetMovies()),
 });
 
 const ListContainer = connect(

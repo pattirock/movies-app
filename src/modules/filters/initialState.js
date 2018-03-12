@@ -1,4 +1,6 @@
+import CONSTANTS from '../../assets/javascripts/constants';
+
 export default {
-  filter: 'popular',
+  filter: CONSTANTS.defaultFilter,
   page: 1,
 };

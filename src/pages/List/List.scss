@@ -1,5 +1,16 @@
 .list-page{  
   .list-page-content {
     margin-top: 20px;
+
+    .no-poster {
+      width: 100%;
+      height: 100%;
+      background-color: whitesmoke;
+      background-image: url('../../assets/images/poster-not-found.jpeg');
+      background-size: 7rem;
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 }

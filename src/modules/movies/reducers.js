@@ -8,6 +8,9 @@ const moviesReducer = (movies = [], action) => {
     case types.GET_MOVIES_SUCCESS: {
       return payload.data;
     }
+    case types.SEARCH_MOVIES_SUCCESS: {
+      return payload.data;
+    }
     default: {
       return movies;
     }

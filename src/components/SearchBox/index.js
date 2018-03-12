@@ -1,3 +1,3 @@
-import SearchBox from './SearchBox';
+import SearchBoxContainer from './SearchBoxContainer';
 
-export default SearchBox;
+export default SearchBoxContainer;

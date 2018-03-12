@@ -141,7 +141,7 @@ Pagination.propTypes = {
   handlePageSelected: PropTypes.func,
   marginPagesDisplayed: PropTypes.number,
   pageRangeDisplayed: PropTypes.number,
-  totalPages: PropTypes.number.isRequired,
+  totalPages: PropTypes.number,
 };
 
 Pagination.defaultProps = {
@@ -150,6 +150,7 @@ Pagination.defaultProps = {
   handlePageSelected: () => {},
   marginPagesDisplayed: CONSTANTS.marginPagesDisplayed,
   pageRangeDisplayed: CONSTANTS.pageRangeDisplayed,
+  totalPages: 0,
 };
 
 export default Pagination;

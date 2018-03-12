@@ -9,9 +9,11 @@ class ListItem extends Component {
     return (
       <div className="column is-3">
         <Link to={`/movie/${id}`}>
-          <figure className="image is-square">
-            <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
-          </figure>
+          {poster_path ?
+            <figure className="image is-square">
+              <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
+            </figure> : <div className="no-poster" />
+          }
         </Link>
       </div>
     );

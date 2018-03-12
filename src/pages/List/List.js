@@ -4,10 +4,12 @@ import { isEqual } from 'lodash';
 import Header from '../../partials/Header';
 import Footer from '../../partials/Footer';
 import Pagination from '../../components/Pagination';
+import NoFound from '../../components/NoFound';
 import ListItem from './ListItem';
+import CONSTANTS from '../../assets/javascripts/constants';
 import './List.scss';
 
-/* eslint-disable max-len, jsx-a11y/anchor-is-valid */
+/* eslint-disable max-len, jsx-a11y/anchor-is-valid, function-paren-newline, jsx-a11y/click-events-have-key-events, sx-a11y/no-static-element-interactions */
 class List extends Component {
   componentDidMount() {
     const { getMovies, currentPage, filter } = this.props;
@@ -35,10 +37,23 @@ class List extends Component {
 
   getItems() {
     const { movies } = this.props;
+    let itemList = [];
 
-    return movies.map(mv => (
-      <ListItem key={`movie-${mv.id}`} data={mv} />
-    ));
+    if (movies.length > 0) {
+      itemList = movies.map(mv => (
+        <ListItem key={`movie-${mv.id}`} data={mv} />
+      ));
+    } else {
+      itemList.push(<NoFound />);
+    }
+
+    return itemList;
+  }
+
+  isPaginationNeeded() {
+    const { totalPages } = this.props;
+
+    return totalPages > 1;
   }
 
   render() {
@@ -52,7 +67,7 @@ class List extends Component {
         </div>
         <div className="container u-m-20">
           <div className="columns is-centered">
-            <Pagination className="column is-5" />
+            {this.isPaginationNeeded() && <Pagination className="column is-5" />}
           </div>
         </div>
         <Footer />
@@ -66,13 +81,15 @@ List.propTypes = {
   filter: PropTypes.string,
   getMovies: PropTypes.func,
   movies: PropTypes.arrayOf(PropTypes.object),
+  totalPages: PropTypes.number,
 };
 
 List.defaultProps = {
   currentPage: 1,
-  filter: 'popular',
+  filter: CONSTANTS.defaultFilter,
   getMovies: () => {},
   movies: [],
+  totalPages: 0,
 };
 
 export default List;

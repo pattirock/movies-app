@@ -1,6 +1,14 @@
 import * as creators from './creators';
+import CONSTANTS from '../../assets/javascripts/constants';
 
-/* eslint-disable import/prefer-default-export */
 export const getMovies = (filterName, page) => (
   dispatch => dispatch(creators.getMovies(filterName, page))
+);
+
+export const searchMovies = query => (
+  dispatch => dispatch(creators.searchMovies(query))
+);
+
+export const resetMovies = () => (
+  dispatch => dispatch(creators.resetMovies(CONSTANTS.defaultFilter, 1))
 );
