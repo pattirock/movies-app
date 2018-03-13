@@ -7,9 +7,8 @@ export default () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={List} />
-      <Route path="/search/:value" render={() => <div>Movies - Search </div>} />
+      <Route path="/page/:page" component={List} />
       <Route path="/movie/:id" component={Detail} />
-      {/* <Route component={NotFound} /> */}
     </Switch>
   </BrowserRouter>
 );

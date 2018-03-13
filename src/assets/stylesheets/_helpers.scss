@@ -2,8 +2,11 @@ $sizes: (0,10,15,20,25,30,50);
 $positions: ('top','left','bottom','right');
 
 @each $size in $sizes {
-  .u-m-#{$size} {
-    margin: $size + px;
+  .u-m-t-#{$size} {
+    margin-top: $size + px;
+  }
+  .u-m-b-#{$size} {
+    margin-bottom: $size + px;
   }
   .u-p-#{$size} {
     padding: $size + px;

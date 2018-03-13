@@ -12,9 +12,26 @@ import './List.scss';
 /* eslint-disable max-len, jsx-a11y/anchor-is-valid, function-paren-newline, jsx-a11y/click-events-have-key-events, sx-a11y/no-static-element-interactions */
 class List extends Component {
   componentDidMount() {
-    const { getMovies, currentPage, filter } = this.props;
+    const {
+      getMovies, currentPage, filter, match: { params: { page } },
+    } = this.props;
+    let loadPage = currentPage;
 
-    getMovies(filter, currentPage);
+    if (page) {
+      loadPage = page;
+    }
+    getMovies(filter, loadPage);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {
+      match: { params: { page } }, getMovies, filter,
+    } = nextProps;
+    let loadPage;
+    if (page) {
+      loadPage = page;
+      getMovies(filter, loadPage);
+    }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -65,9 +82,9 @@ class List extends Component {
             {this.getItems()}
           </div>
         </div>
-        <div className="container u-m-20">
-          <div className="columns is-centered">
-            {this.isPaginationNeeded() && <Pagination className="column is-5" />}
+        <div className="container is-widescreen u-m-t-20 u-m-b-20">
+          <div className="columns">
+            {this.isPaginationNeeded() && <Pagination className="column is-3" />}
           </div>
         </div>
         <Footer />
@@ -80,6 +97,12 @@ List.propTypes = {
   currentPage: PropTypes.number,
   filter: PropTypes.string,
   getMovies: PropTypes.func,
+  match: PropTypes.shape({
+    isExact: PropTypes.bool,
+    params: PropTypes.object,
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }),
   movies: PropTypes.arrayOf(PropTypes.object),
   totalPages: PropTypes.number,
 };
@@ -88,6 +111,7 @@ List.defaultProps = {
   currentPage: 1,
   filter: CONSTANTS.defaultFilter,
   getMovies: () => {},
+  match: {},
   movies: [],
   totalPages: 0,
 };

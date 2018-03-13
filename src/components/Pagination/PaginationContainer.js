@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import { changePage } from '../../modules/filters/actions';
 
 const mapStateToProps = state => ({
-  currentPage: state.filters.page,
+  currentPage: state.movies.page,
   totalPages: state.movies.total_pages,
 });
 
