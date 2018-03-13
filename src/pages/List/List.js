@@ -23,17 +23,6 @@ class List extends Component {
     getMovies(filter, loadPage);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const {
-      match: { params: { page } }, getMovies, filter,
-    } = nextProps;
-    let loadPage;
-    if (page) {
-      loadPage = page;
-      getMovies(filter, loadPage);
-    }
-  }
-
   shouldComponentUpdate(nextProps) {
     const { movies, currentPage, filter } = this.props;
 
@@ -84,7 +73,7 @@ class List extends Component {
         </div>
         <div className="container is-widescreen u-m-t-20 u-m-b-20">
           <div className="columns">
-            {this.isPaginationNeeded() && <Pagination className="column is-3" />}
+            {this.isPaginationNeeded() && <Pagination className="column is-5" />}
           </div>
         </div>
         <Footer />
