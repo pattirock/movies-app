@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions, max-len */
@@ -77,4 +76,4 @@ Pagination.defaultProps = {
   handlePageSelected: () => {},
 };
 
-export default withRouter(Pagination);
+export default Pagination;

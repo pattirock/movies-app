@@ -5,6 +5,6 @@ export const toTitleCase = (str) => {
 };
 
 export const getYear = (date) => {
-  const parseDate = new Date(date);
-  return parseDate.getFullYear();
+  const parseDate = date && new Date(date.toString());
+  return parseDate ? parseDate.getFullYear() : '';
 };
