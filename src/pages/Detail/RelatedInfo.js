@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid, max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, function-paren-newline */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';

@@ -7,7 +7,6 @@ import './Filters.scss';
 
 const filters = CONSTANTS.movieFilters;
 
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions, jsx-a11y/anchor-is-valid, max-len */
 const Filters = ({ className, filterBy, filterName }) => (
   <div
     className={`is-hidden-mobile ${className}`}

@@ -4,7 +4,6 @@ import Filters from '../../components/Filters';
 import SearchBox from '../../components/SearchBox';
 import './Header.scss';
 
-/* eslint-disable jsx-a11y/anchor-is-valid, max-len */
 const Header = () => (
   <section className="hero has-background is-medium">
     <div className="hero-head">
@@ -18,11 +17,6 @@ const Header = () => (
               <span />
             </div>
           </div>
-          {/* <div id="navMenu" className="navbar-menu">
-            <div className="navbar-end">
-              <Link to="/" className="navbar-item " data-tool="Home">Home</Link>
-            </div>
-          </div> */}
         </div>
       </nav>
     </div>

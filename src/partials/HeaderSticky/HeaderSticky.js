@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './HeaderSticky.scss';
 
-/* eslint-disable jsx-a11y/anchor-is-valid, max-len */
 const HeaderSticky = () => (
   <section className="hero">
     <div className="hero-head">

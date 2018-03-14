@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-/* eslint-disable camelcase, jsx-a11y/anchor-is-valid */
 class ListItem extends Component {
   render() {
     const { data: { id, poster_path, title } } = this.props;
     return (
       <div className="column is-3 image-container">
+        {poster_path ?
+          <figure className="image is-square">
+            <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
+          </figure> : <div className="no-poster" />
+        }
         <Link to={`/movie/${id}`}>
-          {poster_path ?
-            <figure className="image is-square">
-              <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
-            </figure> : <div className="no-poster" />
-          }
+          <div className="overlay">
+            <div className="text">{title}</div>
+          </div>
         </Link>
-        <div className="overlay">
-          <div className="text">{title}</div>
-        </div>
       </div>
     );
   }

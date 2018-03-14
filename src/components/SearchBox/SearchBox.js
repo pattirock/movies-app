@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './SearchBox.scss';
 
-/* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events */
 class SearchBox extends Component {
   constructor(props) {
     super(props);

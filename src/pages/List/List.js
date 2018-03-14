@@ -9,7 +9,6 @@ import ListItem from './ListItem';
 import CONSTANTS from '../../assets/javascripts/constants';
 import './List.scss';
 
-/* eslint-disable max-len, jsx-a11y/anchor-is-valid, function-paren-newline, jsx-a11y/click-events-have-key-events, sx-a11y/no-static-element-interactions */
 class List extends Component {
   componentDidMount() {
     const {

@@ -1,4 +1,4 @@
-/* eslint-disable function-paren-newline, jsx-a11y/anchor-is-valid */
+/* eslint-disable function-paren-newline */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { sample, isEmpty } from 'lodash';
