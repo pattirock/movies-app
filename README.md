@@ -1,7 +1,7 @@
 ## Installation
 
 ```bash
-git clone 
+git clone https://github.com/pattirock/movies-app.git
 cd movies-app
 npm install
 ```
@@ -12,4 +12,4 @@ npm install
 npm start
 ```
 
-This boilerplate is built using [create-react-app](https://github.com/facebookincubator/create-react-app) so you will want to read the User Guide for more goodies.
+This app is built using [create-react-app](https://github.com/facebookincubator/create-react-app).
